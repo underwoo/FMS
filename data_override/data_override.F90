@@ -74,7 +74,7 @@ module data_override_mod
 ! A field can be overriden globally (by default) or users can specify one or two regions in which
 ! data_override will take place, field values outside the region will not be affected.
 !</OVERVIEW>
-#include <fms_platform.h>
+#include  "../include/fms_platform.h"
 use platform_mod, only: r8_kind
 use constants_mod, only: PI
 use mpp_mod, only : mpp_error,FATAL,WARNING,mpp_pe,stdout,stdlog,mpp_root_pe, NOTE, mpp_min, mpp_max, mpp_chksum
@@ -102,7 +102,7 @@ implicit none
 private
 
 ! Include variable "version" to be written to log file.
-#include<file_version.h>
+#include "../include/file_version.h"
 
 type data_type
    character(len=3)   :: gridname

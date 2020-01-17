@@ -68,7 +68,7 @@ public :: is_inside_polygon
 
 logical :: module_is_initialized = .true.
 ! Include variable "version" to be written to log file.
-#include<file_version.h>
+#include "../include/file_version.h"
 
 contains
 

@@ -80,7 +80,7 @@
 !! </table>
 module interpolator_mod
 
-#include <fms_platform.h>
+#include  "../include/fms_platform.h"
 
 use mpp_mod,           only : mpp_error, &
                               FATAL,     &
@@ -242,7 +242,7 @@ end interface interp_weighted_scalar
 !----------- version number for this module --------------------------
 
 ! Include variable "version" to be written to log file.
-#include<file_version.h>
+#include "../include/file_version.h"
 logical            :: module_is_initialized = .false.
 logical            :: clim_diag_initialized = .false.
 

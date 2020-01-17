@@ -89,7 +89,7 @@ module time_manager_mod
 !    contains three PRIVATE variables: days, seconds and ticks.
 ! </DATA>
 
-#include <fms_platform.h>
+#include "../include/fms_platform.h"
 
 use constants_mod, only: rseconds_per_day=>seconds_per_day
 use fms_mod, only: error_mesg, FATAL, WARNING, write_version_number, stdout
@@ -204,7 +204,7 @@ end interface
 !======================================================================
 
 ! Include variable "version" to be written to log file.
-#include<file_version.h>
+#include "../include/file_version.h"
 logical :: module_is_initialized = .false.
 
 !======================================================================

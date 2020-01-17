@@ -127,7 +127,7 @@ public i_sst, j_sst, sst_ncep, sst_anom, forecast_mode, use_ncep_sst
 !  ---- version number -----
 
 ! Include variable "version" to be written to log file.
-#include<file_version.h>
+#include "../include/file_version.h"
 
    real, allocatable:: temp1(:,:), temp2(:,:)
 ! add by JHC

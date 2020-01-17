@@ -107,7 +107,7 @@ character(len=fm_path_name_len) :: save_current_list
 character(len=fm_path_name_len) :: save_path
 character(len=fm_path_name_len) :: save_name
 ! Include variable "version" to be written to log file.
-#include<file_version.h>
+#include "../include/file_version.h"
 
 !
 !        Interface definitions for overloaded routines

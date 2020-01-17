@@ -48,7 +48,7 @@
       integer, intent(in),  optional :: tag
       integer, intent(out), optional :: recv_request
 
-#include <mpp/shmem.fh>
+#include  "mpp/shmem.fh"
       external shmem_ptr
 
       integer :: i, outunit, errunit
@@ -255,4 +255,4 @@
     end subroutine MPP_BROADCAST_
 
 !####################################################################################
-#include <mpp_transmit.inc>
+#include  "mpp_transmit.inc"

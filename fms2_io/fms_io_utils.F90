@@ -287,11 +287,11 @@ function has_domain_tile_string(string) &
 
   has_string = .false.
 ! Assigns i to the index where ".tile" starts
-  i = index(trim(string), ".tile", back=.true.) 
+  i = index(trim(string), ".tile", back=.true.)
   if (i .ne. 0) then
     l = len_trim(string)
-! Sets i to the index after .tile 
-    i = i + 5 
+! Sets i to the index after .tile
+    i = i + 5
     j = i
     do while (i .le. l)
 ! If the ith characters is a dot but i not equal to the index after .tile set has_string to true
@@ -412,7 +412,7 @@ subroutine open_check(flag, fname)
 
   logical, intent(in) :: flag
   character(len=*), intent(in), optional :: fname !< The file name
-  
+
   if (.not. flag) then
      if (present(fname)) then
           call mpp_error(fatal, "Error occured while opening file "//trim(fname))
@@ -423,10 +423,10 @@ subroutine open_check(flag, fname)
 end subroutine open_check
 
 
-include "array_utils.inc"
-include "array_utils_char.inc"
-include "get_data_type_string.inc"
-include "get_checksum.inc"
+include "include/array_utils.inc"
+include "include/array_utils_char.inc"
+include "include/get_data_type_string.inc"
+include "include/get_checksum.inc"
 
 
 end module fms_io_utils_mod

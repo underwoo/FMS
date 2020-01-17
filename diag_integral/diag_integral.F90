@@ -21,7 +21,7 @@
 !! \brief Contains the \ref diag_integral_mod module
 
                      module diag_integral_mod
-#include <fms_platform.h>
+#include  "../include/fms_platform.h"
 
 
 

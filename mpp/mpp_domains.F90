@@ -128,7 +128,7 @@
 module mpp_domains_mod
 !a generalized domain decomposition package for use with mpp_mod
 !Balaji (vb@gfdl.gov) 15 March 1999
-#include <fms_platform.h>
+#include "../include/fms_platform.h"
 
 #if defined(use_libMPI) && defined(sgi_mipspro)
   use mpi
@@ -2774,19 +2774,19 @@ end interface
   end interface
 
   ! Include variable "version" to be written to log file.
-#include<file_version.h>
+#include "../include/file_version.h"
   public version
 
 
 contains
 
-#include <mpp_define_nest_domains.inc>
-#include <mpp_domains_util.inc>
-#include <mpp_domains_comm.inc>
-#include <mpp_domains_define.inc>
-#include <mpp_domains_misc.inc>
-#include <mpp_domains_reduce.inc>
-#include <mpp_unstruct_domain.inc>
+#include  "include/mpp_define_nest_domains.inc"
+#include  "include/mpp_domains_util.inc"
+#include  "include/mpp_domains_comm.inc"
+#include  "include/mpp_domains_define.inc"
+#include  "include/mpp_domains_misc.inc"
+#include  "include/mpp_domains_reduce.inc"
+#include  "include/mpp_unstruct_domain.inc"
 
 end module mpp_domains_mod
 

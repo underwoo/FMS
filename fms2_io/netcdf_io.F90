@@ -66,7 +66,7 @@ type, public :: FmsNetcdfFile_t
                      !! I/O root.
   logical :: is_restart !< Flag telling if the this file is a restart
                         !! file (that has internal pointers to data).
-  logical, allocatable :: is_open !< Allocated and set to true if opened.  
+  logical, allocatable :: is_open !< Allocated and set to true if opened.
   type(RestartVariable_t), dimension(:), allocatable :: restart_vars !< Array of registered
                                                                      !! restart variables.
   integer :: num_restart_vars !< Number of registered restart variables.
@@ -409,7 +409,7 @@ function netcdf_file_open(fileobj, path, mode, nc_format, pelist, is_restart) &
       success = .true.
       return
     endif
-  endif 
+  endif
   !Add ".res" to the file path if necessary.
   is_res = .false.
   if (present(is_restart)) then
@@ -1498,8 +1498,8 @@ function get_valid(fileobj, variable_name) &
       add_offset = 0._real64
     endif
 
-	 !Max and and min data values are defined by the valid_range, valid_min, and valid_max attributes if they are present. 
-	 !If the fill_value attribute is present and valid_range is not, then fill_value determines valid_data values. 
+	 !Max and and min data values are defined by the valid_range, valid_min, and valid_max attributes if they are present.
+	 !If the fill_value attribute is present and valid_range is not, then fill_value determines valid_data values.
 	 !Otherwise, the missing_value attribute determines valid data_values if it is present, and valid_range fill_value attributes are not.
 
     !Get default max/min from missing_value.  These could be overwritten by
@@ -1613,7 +1613,7 @@ elemental function is_valid(datum, validobj) &
     valid_data = rdatum .ge. validobj%min_val .and. rdatum .le. validobj%max_val
   elseif (validobj%has_fill) then
     valid_data = rdatum .ne. validobj%fill_val
-  elseif (validobj%has_missing) then 
+  elseif (validobj%has_missing) then
     valid_data = rdatum .ne. validobj%missing_val
   endif
 end function is_valid
@@ -1649,15 +1649,15 @@ subroutine compressed_start_and_count(fileobj, nelems, npes_start, npes_count)
 end subroutine compressed_start_and_count
 
 
-include "netcdf_add_restart_variable.inc"
-include "netcdf_read_data.inc"
-include "netcdf_write_data.inc"
-include "register_global_attribute.inc"
-include "register_variable_attribute.inc"
-include "get_global_attribute.inc"
-include "get_variable_attribute.inc"
-include "compressed_write.inc"
-include "compressed_read.inc"
+include "include/netcdf_add_restart_variable.inc"
+include "include/netcdf_read_data.inc"
+include "include/netcdf_write_data.inc"
+include "include/register_global_attribute.inc"
+include "include/register_variable_attribute.inc"
+include "include/get_global_attribute.inc"
+include "include/get_variable_attribute.inc"
+include "include/compressed_write.inc"
+include "include/compressed_read.inc"
 
 
 !> @brief Wrapper to distinguish interfaces.
@@ -1870,9 +1870,9 @@ function check_if_open(fileobj, fname) result(is_open)
   endif
 
   if (present(fname)) then
-    !If the filename does not match the name in path, 
+    !If the filename does not match the name in path,
     !then this is considered not open
-     if (is_open .AND. trim(fname) .ne. trim(fileobj%path)) is_open = .false. 
+     if (is_open .AND. trim(fname) .ne. trim(fileobj%path)) is_open = .false.
   endif
 end function check_if_open
 

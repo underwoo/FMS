@@ -91,7 +91,7 @@ public :: gaussian_topog_init, get_gaussian_topog
 !-----------------------------------------------------------------------
 
 ! Include variable "version" to be written to log file.
-#include<file_version.h>
+#include "../include/file_version.h"
 
 logical :: do_nml = .true.
 logical :: module_is_initialized = .FALSE.

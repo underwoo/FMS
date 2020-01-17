@@ -19,7 +19,7 @@
 
 
 module time_interp_external2_mod
-#include  <fms_platform.h>
+#include   "../include/fms_platform.h"
 !
 !<CONTACT EMAIL="Matthew.Harrison@noaa.gov">M.J. Harrison</CONTACT>
 !
@@ -71,7 +71,7 @@ module time_interp_external2_mod
   private
 
 ! Include variable "version" to be written to log file.
-#include<file_version.h>
+#include "../include/file_version.h"
 
   integer, parameter, public  :: NO_REGION=0, INSIDE_REGION=1, OUTSIDE_REGION=2
   integer, parameter, private :: modulo_year= 0001

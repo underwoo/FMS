@@ -41,7 +41,7 @@ module horiz_interp_conserve_mod
   !     An optional output mask field may be used in conjunction with the input mask to show
   !     where output data exists.
   ! </DESCRIPTION>
-#include <fms_platform.h>
+#include  "../include/fms_platform.h"
   use mpp_mod,               only: mpp_send, mpp_recv, mpp_pe, mpp_root_pe, mpp_npes
   use mpp_mod,               only: mpp_error, FATAL,  mpp_sync_self
   use mpp_mod,               only: COMM_TAG_1, COMM_TAG_2
@@ -110,7 +110,7 @@ module horiz_interp_conserve_mod
   integer :: pe, root_pe
   !-----------------------------------------------------------------------
   ! Include variable "version" to be written to log file.
-#include<file_version.h>
+#include "../include/file_version.h"
   logical            :: module_is_initialized = .FALSE.
 
   logical         :: great_circle_algorithm = .false.
