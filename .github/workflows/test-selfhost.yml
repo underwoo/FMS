@@ -1,0 +1,14 @@
+name: GitHub on Self-hosted Runner Test
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: [self-hosted]
+    steps:
+    - name: simple commands
+      run: |
+        hostname
+        pwd
+        ls
+
