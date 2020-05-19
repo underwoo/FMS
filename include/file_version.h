@@ -21,5 +21,5 @@
 #ifdef _FILE_VERSION
   character(len=*), parameter :: version = _FILE_VERSION
 #else
-  character(len=*), parameter :: version = 'unknown'
+  character(len=*), parameter :: version = 'MAY_EVERYONE_BE_ETERNALLY_HAPPY'
 #endif
