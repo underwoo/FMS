@@ -59,3 +59,6 @@ cmake_DATA = libFMSConfig.cmake \
 EXTRA_DIST = README.md
 
 CLEANFILES = *__genmod.mod *__genmod.f90
+
+clean-local:
+	-rm -rf libFMSConfig.cmake libFMSConfigVersion.cmake
