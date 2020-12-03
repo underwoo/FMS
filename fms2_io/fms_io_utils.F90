@@ -1,3 +1,22 @@
+!***********************************************************************
+!*                   GNU Lesser General Public License
+!*
+!* This file is part of the GFDL Flexible Modeling System (FMS).
+!*
+!* FMS is free software: you can redistribute it and/or modify it under
+!* the terms of the GNU Lesser General Public License as published by
+!* the Free Software Foundation, either version 3 of the License, or (at
+!* your option) any later version.
+!*
+!* FMS is distributed in the hope that it will be useful, but WITHOUT
+!* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+!* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+!* for more details.
+!*
+!* You should have received a copy of the GNU Lesser General Public
+!* License along with FMS.  If not, see <http://www.gnu.org/licenses/>.
+!***********************************************************************
+
 !> @file
 
 !> @brief Utility routines.
@@ -29,7 +48,7 @@ public :: open_check
 public :: string_compare
 public :: restart_filepath_mangle
 
-!> @brief A linked list of strings.
+!> @brief A linked list of strings
 type :: char_linked_list
   character(len=128) :: string
   type(char_linked_list), pointer :: head => null()
@@ -173,16 +192,31 @@ end subroutine openmp_thread_trap
 
 
 !> @brief Safely copy a string from one buffer to another.
-subroutine string_copy(dest, source)
+subroutine string_copy(dest, source, check_for_null)
   character(len=*), intent(inout) :: dest !< Destination string.
   character(len=*), intent(in) :: source !< Source string.
+  logical, intent(in), optional :: check_for_null !<Flag indicating to test for null character
 
-  if (len_trim(source) .gt. len(dest)) then
+  integer :: i
+  logical :: check_null
+
+  check_null = .false.
+  if (present(check_for_null)) check_null = check_for_null
+
+  i = 0
+  if (check_null) then
+     i = index(source, char(0)) - 1
+  endif
+
+  if (i < 1 ) i = len_trim(source)
+
+  if (len_trim(source(1:i)) .gt. len(dest)) then
     call error("The input destination string is not big enough to" &
                  //" to hold the input source string.")
   endif
   dest = ""
-  dest = adjustl(trim(source))
+  dest = adjustl(trim(source(1:i)))
+
 end subroutine string_copy
 
 
