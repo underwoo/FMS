@@ -1,0 +1,41 @@
+name: Fortitude lint
+
+on: [push, pull_request]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.2
+      - name: Install fortitude
+        run: pip install fortitude-lint
+      - name: Run fortitude check
+        run: |
+          fortitude check . --output-format=concise --ignore=E001 --line-length=121 > fortitude_report.txt || true
+        continue-on-error: true
+      - name: Run fortitude with fix
+        run: |
+          fortitude check . --fix --ignore=E001 --line-length=121 || true
+        continue-on-error: true
+      - name: Generate diff of changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git diff --no-color > fortitude_diff.patch
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: fortitude-report
+          path: fortitude_report.txt
+          retention-days: 30
+      - name: Upload diff artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: fortitude-diff
+          path: fortitude_diff.patch
+          retention-days: 30
